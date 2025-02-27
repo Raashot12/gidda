@@ -6,9 +6,9 @@
 
 # 🚀 Giddaa - Real Estate Portal
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
-[![React](https://img.shields.io/badge/React-18.x-58c4dc.svg)](https://react.dev/learn/start-a-new-react-project)
-[![Next.js](https://img.shields.io/badge/Next-13.x-000.svg)](https://nextjs.org/docs/getting-started/installation)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+[![React](https://img.shields.io/badge/React-19.0-58c4dc.svg)](https://react.dev/learn/start-a-new-react-project)
+[![Next.js](https://img.shields.io/badge/Next.js-15.1.7-000.svg)](https://nextjs.org/docs/getting-started/installation)
 
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
