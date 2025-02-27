@@ -1,5 +1,5 @@
 import PageTitle from "@/components/SharedComponents/PageTitle"
-import React, { useState } from "react"
+import React, {useState} from "react"
 
 const SpecificationAndAmenties = () => {
   const allFeatures = [
@@ -34,13 +34,10 @@ const SpecificationAndAmenties = () => {
     "Clubhouse",
   ]
 
-  // State to keep track of which features are selected
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([])
 
-  // Check if all features are currently selected
   const allSelected = selectedFeatures.length === allFeatures.length
 
-  // Handle toggling "Select All"
   const toggleSelectAll = () => {
     if (allSelected) {
       setSelectedFeatures([])
@@ -49,7 +46,6 @@ const SpecificationAndAmenties = () => {
     }
   }
 
-  // Handle selecting/deselecting an individual feature
   const handleCheck = (feature: string) => {
     if (selectedFeatures.includes(feature)) {
       setSelectedFeatures(prev => prev.filter(f => f !== feature))
@@ -61,27 +57,25 @@ const SpecificationAndAmenties = () => {
   return (
     <div>
       <PageTitle title="Specifications & Amenities" />
-      <div className="p-4">
-        {/* Header row */}
-        <div className="flex items-center justify-between border-b border-gray-200 pb-2">
+      <div>
+        <div className="flex items-center justify-between bg-[#F0F0F0] mt-6 rounded-[8px] py-2 px-4">
           <h2 className="text-lg font-semibold">General Features</h2>
-          <label className="flex items-center space-x-2 cursor-pointer select-none">
+          <label className="flex items-center space-x-3 cursor-pointer select-none">
+            <span className="text-[13px] font-[700]">Select All</span>
             <input
               type="checkbox"
               className="form-checkbox h-4 w-4"
               onChange={toggleSelectAll}
               checked={allSelected}
             />
-            <span className="text-sm">Select All</span>
           </label>
         </div>
 
-        {/* Grid of checkboxes */}
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-4">
+        <div className="mt-6 mb-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-4">
           {allFeatures.map(feature => (
             <label
               key={feature}
-              className="flex items-center space-x-2 cursor-pointer select-none"
+              className="flex items-start gap-2 flex-col-reverse cursor-pointer select-none"
             >
               <input
                 type="checkbox"
@@ -89,7 +83,7 @@ const SpecificationAndAmenties = () => {
                 checked={selectedFeatures.includes(feature)}
                 onChange={() => handleCheck(feature)}
               />
-              <span className="text-sm">{feature}</span>
+              <span className="text-[13px] font-[700]">{feature}</span>
             </label>
           ))}
         </div>
