@@ -55,6 +55,7 @@ $ npm run api-generate
 
 ## Screenshots
 
-![Home Page](https://raw.githubusercontent.com/username/repository/main/screenshots/home-page.jpg)
-![Login](https://raw.githubusercontent.com/username/repository/main/screenshots/login-page.png)
-![Dashboard](https://raw.githubusercontent.com/username/repository/main/screenshots/dashboard.png)
+![Home Page](./public/screenshots/home-page.JPG)
+
+![Login](./public/screenshots/login-page.PNG)
+![Dashboard](./public/screenshots/dashboard.PNG)
