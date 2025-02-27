@@ -55,7 +55,7 @@ $ npm run api-generate
 
 ## Screenshots
 
-![Home Page](./public/screenshots/home-page.JPG)
+![Home Page](screenshots/home-page.JPG)
 
-![Login](./public/screenshots/login-page.PNG)
-![Dashboard](./public/screenshots/dashboard.PNG)
+![Login](screenshots/login-page.PNG)
+![Dashboard](screenshots/dashboard.PNG)
