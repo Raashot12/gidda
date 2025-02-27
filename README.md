@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://www.plateaumed.com" target="blank">
-    <img src="./public/icon-192x192.png" width="100" alt="Logo" />
+    <img src="./public/favicon.svg" width="100" alt="Logo" />
   </a>
 </p>
 
-# 🚀 PlateauMed - EHR Web Portal
+# 🚀 Giddaa - Real Estate Portal
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 [![React](https://img.shields.io/badge/React-18.x-58c4dc.svg)](https://react.dev/learn/start-a-new-react-project)
@@ -17,8 +17,8 @@
 ## Setup
 
 ```sh
-$ (ssh) git clone git@github.com:Plateaumed/ehr-react-web.git
-$ cd ehr-react-web
+$ (ssh) git clone https://github.com/Raashot12/gidda.git
+$ cd gidda
 $ npm cache clean --force
 $ npm install
 # Or, npm install --legacy-peer-deps
@@ -28,14 +28,14 @@ $ npm run dev
 
 #### Usage
 
-> Local: http://localhost:4200
+> Local: http://localhost:3000
 
 > Dev: https://app.plateaumed-dev.com/login
 
-## Cypress Automation Test
+## Jest Unit Testing 
 
 ```sh
-$ npm run cypress:open:local
+$ npm run test
 ```
 
 ## OpenAPI Code Generation
@@ -48,12 +48,13 @@ $ npm run api-generate
 
 |   # | Service | URL                                                                                                             |
 | --: | :------ | :-------------------------------------------------------------------------------------------------------------- |
-|   1 | Zoho    | https://projects.zoho.com/portal/plateaumeddotcom#kanbanview/1982824000001304007/customview/1982824000000449003 |
-|   2 | Figma   | https://www.figma.com/design/2rMKAVkVhgsk0XJg07XXgZ/PlateauMed-Web-EMR                                          |
-|   3 | Swagger | https://api.plateaumed-dev.com/                                                                                 |
+|   1 | Gidda    | https://projects.zoho.com/portal/plateaumeddotcom#kanbanview/1982824000001304007/customview/1982824000000449003 |
+|   2 | Figma   | https://www.figma.com/design/TR4GXLbkhPOdN1LiXZsdZO/Frontend-Interview-Test?node-id=1-19576&t=ZSGyIAoosuHEcKBz-0                                          |
+|   3 | Notion | https://giddaa.notion.site/GIDDAA-FRONTEND-TECHNICAL-INTERVIEW-INSTRUCTIONS-6a4b828d491044d38fac4452d1d03b7a#18b33b9acc77809086afd07d4e313104                                                                                |
 
 ## Screenshots
 
-![Login](./public/screenshots/dongle-login.png)
+![Home Page](./public/screenshots/home-page.jpg)
 
-![Dashboard](./public/screenshots/dongle-dashboard.png)
+![Login](./public/screenshots/login-page.png)
+![Dashboard](./public/screenshots/dashboard.png)

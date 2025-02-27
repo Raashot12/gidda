@@ -31,7 +31,7 @@ export default function Header({
    : "ml-0 md:w-[calc(100vw-233px)] md:duration-500"
   return (
     <header
-      className={`fixed top-0 ml-[2450px] overflow-hidden right-0 w-full h-[112px] flex-shrink-0 ${desktopClasses} flex py-[30px] justify-between px-[25px] md:px-[38px] border-b border-[#F0F0F0] bg-white z-50`}
+      className={`fixed top-0 ml-[2450px] right-0 w-full h-[112px] flex-shrink-0 ${desktopClasses} flex py-[30px] justify-between px-[25px] md:px-[38px] border-b border-[#F0F0F0] bg-white z-50`}
     >
       <div className="flex items-center justify-between w-full">
         <div className="flex gap-3 flex-col">

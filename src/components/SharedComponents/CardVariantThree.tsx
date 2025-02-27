@@ -13,9 +13,16 @@ interface CardProps {
   image: StaticImageData
   index: number
   tag: string
+  setIsViewHouse: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const CardVariantThree = ({title, description, tag, image}: CardProps) => {
+const CardVariantThree = ({
+  title,
+  description,
+  tag,
+  image,
+  setIsViewHouse,
+}: CardProps) => {
   return (
     <div className="relative">
       <div className="absolute top-2 left-2">
@@ -51,8 +58,11 @@ const CardVariantThree = ({title, description, tag, image}: CardProps) => {
           <CustomMenu.Target>
             <IconHorizontalDot />
           </CustomMenu.Target>
-          <CustomMenu.Dropdown direction="auto" align="right" >
-            <CustomMenu.Item leftIcon={<IconEye />}>
+          <CustomMenu.Dropdown direction="auto" align="right">
+            <CustomMenu.Item
+              leftIcon={<IconEye />}
+              onClick={() => setIsViewHouse(true)}
+            >
               <p className="font-[400] ml-2 text-[11px] text-[#4B4B4B]">
                 View House
               </p>

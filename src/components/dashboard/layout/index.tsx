@@ -7,6 +7,7 @@ import Pagination from "@/components/SharedComponents/Pagination/Pagination"
 import {usePagination} from "@/components/SharedComponents/Pagination/usePagination"
 import React, {useState} from "react"
 import CreateEstate from "../CreateEstate"
+import HouseDetails from "../HouseDetails"
 
 type ImagePreview = {
   fileName: string
@@ -21,6 +22,7 @@ const DashboardUI = () => {
  
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [isModalOpen, setModalOpen] = useState(false)
+  const [isViewHouse, setIsViewHouse] = useState(false)
   const batchCount = 4
   const {pagination, prevPage, nextPage, changePage} = usePagination({
     itemsPerPage: 4,
@@ -112,7 +114,12 @@ const DashboardUI = () => {
       </div>
       <div className="grid grid-cols-1 mt-8 md:mt-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {visibleProperties.map((card, index) => (
-          <CardVariantThree key={index} index={index} {...card} />
+          <CardVariantThree
+            key={index}
+            index={index}
+            {...card}
+            setIsViewHouse={setIsViewHouse}
+          />
         ))}
       </div>
       <div className="flex items-center gap-2 flex-col justify-center mt-[30px] sm:mt-[40px] cursor-pointer">
@@ -147,6 +154,7 @@ const DashboardUI = () => {
         setModalOpen={setModalOpen}
         imagePreviews={imagePreviews}
       />
+      <HouseDetails setModalOpen={setIsViewHouse} isModalOpen={isViewHouse} />
     </div>
   )
 }
