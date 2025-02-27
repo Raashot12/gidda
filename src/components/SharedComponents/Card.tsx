@@ -30,7 +30,7 @@ const Card = ({
       {isGetStarted && (
         <button className="bg-[#1C501E] text-white mt-6 px-6 h-[40px] rounded-full flex items-center justify-center gap-2 text-[13px] font-[700] w-full shadow-md hover:bg-[#174319] transition">
           Get Started Now
-          <span className="bounceArrowX">
+          <span className="animate-sway">
             <IconArrowPointer />
           </span>
         </button>

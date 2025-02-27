@@ -4,11 +4,12 @@ import Image from "next/image"
 import chimalarge from "../../Images/chimalarge.jpeg"
 import chimaprofile from "../../Images/chimaprofile.jpg"
 import Title from "@/components/SharedComponents/Title"
-import React from "react"
+import React, {useState} from "react"
 import IconPlay from "@/components/IconComponents/IconPlay"
 import Steppers from "@/components/SharedComponents/Steppers"
 
 const PeopleTalkSection = () => {
+  const [getPercentage, setGetPercentage] = useState(30)
   return (
     <div className="container mx-auto py-[40px] px-6 md:py-[64px] z-100">
       <Title
@@ -16,7 +17,7 @@ const PeopleTalkSection = () => {
         subTitle="What our customers and partners think about us."
       />
       <div className="mx-auto flex justify-center items-center mt-10 mb-12">
-        <CategoryTabs data={whyGidda} />
+        <CategoryTabs data={whyGidda} setGetPercentage={setGetPercentage} />
       </div>
       <div className="flex align-baseline flex-col xl:flex-row  justify-start mt-5 gap-6 md:gap-[56px]">
         <div className="flex lg:flex-row flex-col lg:h-[590px] items-center sm:items-start border-2 border-primaryGreen rounded-[40px] shadow-lg overflow-hidden bg-gradient">
@@ -58,7 +59,7 @@ const PeopleTalkSection = () => {
           </div>
         </div>
         <div className="xl:block mt-5 lg:mt-0  xl:h-[575px]">
-          <Steppers percent={30} />
+          <Steppers percent={getPercentage} />
         </div>
       </div>
     </div>

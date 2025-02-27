@@ -1,6 +1,16 @@
-import React, {useEffect, useState} from "react"
+import React, {Dispatch, useEffect, useState} from "react"
 
-const CategoryTabs = ({data}: {data: {title: string; id: number}[]}) => {
+const CategoryTabs = ({
+  data,
+  setGetPercentage,
+}: {
+  data: {
+    title: string
+    id: number
+    percent: number
+  }[]
+  setGetPercentage?: Dispatch<React.SetStateAction<number>>
+}) => {
   const [active, setActive] = useState(data[0]?.title)
 
   useEffect(() => {
@@ -12,7 +22,10 @@ const CategoryTabs = ({data}: {data: {title: string; id: number}[]}) => {
         {data.map(category => (
           <button
             key={category.id}
-            onClick={() => setActive(category.title)}
+            onClick={() => {
+              setActive(category.title)
+              setGetPercentage?.(category?.percent as number)
+            }}
             className={`shrink-0  z-10 px-6 py-2 cursor-pointer text-[10px] font-[500] rounded-full transition-colors duration-300 
               ${
                 active === category.title

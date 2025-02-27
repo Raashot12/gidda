@@ -80,9 +80,7 @@ const FooterSection = () => {
             >
               <div className="flex gap-2 items-center">
                 Subscribe{" "}
-                {isSubmitting && (
-                  <LoaderSpinner size={16} color="border-[#346633]" />
-                )}
+                {isSubmitting && <LoaderSpinner size={16} color="#346633" />}
               </div>
             </button>
           </form>

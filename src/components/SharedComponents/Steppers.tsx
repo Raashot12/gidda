@@ -24,7 +24,7 @@ const Steppers: React.FC<SteppersProps> = ({percent}) => {
         />
       </div>
 
-      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 flex flex-row justify-between items-center w-full h-auto cursor-pointer  xl:bottom-0 xl:left-1/2 xl:transform xl:-translate-x-1/2 xl:flex-col xl:justify-between xl:items-center xl:h-full">
+      <div className="absolute top-[49.9%] left-0 transform -translate-y-1/2 flex flex-row justify-between items-center w-full h-auto cursor-pointer  xl:bottom-0 xl:left-1/2 xl:transform xl:-translate-x-1/2 xl:flex-col xl:justify-between xl:items-center xl:h-full">
         {/* Step 1 */}
         <div className="flex flex-col items-center relative">
           <div className="w-[57px] h-[57px] bg-[#335f32] flex items-center justify-center text-white rounded-full text-[24px] font-bold">

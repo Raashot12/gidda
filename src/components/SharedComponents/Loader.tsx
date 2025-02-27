@@ -10,12 +10,12 @@ interface LoaderSpinnerProps {
 const LoaderSpinner: React.FC<LoaderSpinnerProps> = ({
   size = 40,
   borderWidth = 2,
-  color = "border-blue-500",
+  color,
   className = "",
 }) => {
   return (
     <div
-      className={`animate-spin rounded-full border-t-transparent ${color} ${className}`}
+      className={`animate-spin rounded-full border-t-transparent border-[${color}] ${className}`}
       style={{
         width: typeof size === "number" ? `${size}px` : size,
         height: typeof size === "number" ? `${size}px` : size,

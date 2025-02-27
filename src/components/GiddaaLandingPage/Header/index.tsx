@@ -80,6 +80,13 @@ const NavigationHeader = () => {
         }`}
       >
         <div className="container px-6 py-4 flex flex-col items-start space-y-6">
+          {/* Search Bar */}
+          <div className="relative w-full max-w-[300px]">
+            <span className="absolute left-4 top-[14px] text-gray-400">
+              <IconSearch />
+            </span>
+            <TextInput type="text" placeholder="Search for anything" />
+          </div>
           <MenuItems setIsDrawerOpen={setIsDrawerOpen} />
           <div className="flex items-center space-x-6">
             <button className="border-x border-[#D9D9D9] font-[700] text-[12px] leading-[22px] px-5 py-1 text-primaryGreen hover:bg-gray-100">

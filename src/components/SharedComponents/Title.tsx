@@ -16,13 +16,15 @@ const Title = ({title, subTitle}: {title: string; subTitle: string}) => {
       >
         {title}
       </h1>
-      <p
-        data-aos="fade-right"
-        data-aos-duration="2000"
-        className="mx-auto text-center mt-4 w-[401px] max-w-[100%]"
-      >
-        {subTitle}
-      </p>
+      {subTitle && (
+        <p
+          data-aos="fade-right"
+          data-aos-duration="2000"
+          className="mx-auto text-center mt-4 w-[401px] max-w-[100%]"
+        >
+          {subTitle}
+        </p>
+      )}
     </>
   )
 }
