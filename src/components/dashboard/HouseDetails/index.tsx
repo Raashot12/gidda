@@ -161,19 +161,19 @@ const HouseDetails = ({
               return (
                 <div
                   key={value.id}
-                  className="w-full h-[293px] bg-cover"
+                  className="w-full h-[293px] bg-cover rounded-[8px] relative"
                   style={{
-                    backgroundImage: `url(${lekki.src})`,
+                    backgroundImage: `url(${value.src?.src})`,
                     backgroundPosition: "30% 70%",
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <div className="flex gap-2 items-center cursor-pointer absolute bottom-2 right-2">
-                    <button className="bg-[#FFFFFF] text-[#335F32] px-2 py-3 rounded-[100px] flex items-center gap-2 text-[11px] font-[700] shadow-md hover:bg-[#174319] hover:text-[#FFFFF] transition">
+                  <div className="flex gap-2 items-start flex-col cursor-pointer absolute bottom-2 left-2">
+                    <button className="bg-[#FFFFFF] text-[#335F32] px-2 py-2 rounded-[100px] flex items-center gap-2 text-[11px] font-[700]  shadow-sm transition">
                       Side View
                       <span className="animate-bounce"></span>
                     </button>
-                    <button className="bg-[#1C501E] text-white px-2 py-3 border-white border rounded-[100px] flex items-center gap-2 text-[11px] font-[700] shadow-md hover:bg-[#174319] transition">
+                    <button className="bg-[#1C501E] text-white px-1 py-2 border-white border rounded-[100px] flex items-center gap-2 text-[11px] font-[700] shadow-sm hover:bg-[#174319] transition">
                       Actual Image
                       <span className="animate-bounce"></span>
                     </button>

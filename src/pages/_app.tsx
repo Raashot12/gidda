@@ -6,7 +6,7 @@ import {Provider} from "react-redux"
 import store, {persistor} from "@/redux/store"
 import {PersistGate} from "redux-persist/integration/react"
 // fonts
-import "@fontsource-variable/red-hat-display/wght-italic.css"
+import "@fontsource-variable/red-hat-display"
 import ProtectedPage from "@/components/Auth/ProtectedPage"
 
 type NextPageWithLayout = NextPage & {
