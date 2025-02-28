@@ -14,6 +14,7 @@ import ajah from "../../Images/ajah.jpeg"
 import mushin from "../../Images/mushin.jpeg"
 import React, {useCallback, useState} from "react"
 import SpecificationAndAmenties from "../Specification"
+import {estateDetails} from "@/components/constant"
 
 const TabPanelDataList = [
   "Details",
@@ -92,10 +93,7 @@ const HouseDetails = ({
                   <IconMenuDots />
                 </CustomMenu.Target>
                 <CustomMenu.Dropdown direction="auto" align="right">
-                  <CustomMenu.Item
-                    leftIcon={<IconAddHouses />}
-                    // onClick={() => setIsViewHouse(true)}
-                  >
+                  <CustomMenu.Item leftIcon={<IconAddHouses />}>
                     <p className="font-[400] ml-2 text-[11px] text-[#4B4B4B]">
                       Add house
                     </p>
@@ -185,9 +183,29 @@ const HouseDetails = ({
           </div>
         </div>
       </div>
-      <div className="flex mt-7 items-center gap-2">
-        <PageTitle title="Estate Details" />
-        <div className="h-[1px] bg-[#F0F0F0] flex-1"></div>
+      <div>
+        <div className="flex mt-7 items-center gap-2">
+          <PageTitle title="Estate Details" />
+          <div className="h-[1px] bg-[#F0F0F0] flex-1"></div>
+        </div>
+        <div className="grid grid-cols-1 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {estateDetails?.map(item => {
+            return (
+              <div key={item.label}>
+                <div className="font-[700] text-[10px]">{item.label}</div>
+                <div className="font-[400] text-[13px] mt-1">{item.value}</div>
+              </div>
+            )
+          })}
+        </div>
+        <div className="mt-4">
+          <div className="font-[700] text-[10px]">DESCRIPTION</div>
+          <div className="font-[400] text-[13px] mt-1 max-w-[581px] w-[100%]">
+            The property is a really nice and beautiful place. We think you
+            should buy it because it is the best thing you could ever buy in
+            your life for real. Just buy this house. It will be good for...
+          </div>
+        </div>
       </div>
       <SpecificationAndAmenties hideRuler={true} />
     </Modal>

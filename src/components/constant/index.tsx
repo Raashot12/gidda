@@ -379,3 +379,42 @@ export const properties = [
     image: estate,
   },
 ]
+
+export const estateDetails = [
+  {
+    label: "NAME",
+    value: "Two Bedroom Apartment",
+  },
+  {
+    label: "STATE",
+    value: "Federal Capital Territory",
+  },
+  {
+    label: "CITY",
+    value: "Abuja",
+  },
+  {
+    label: "ADDRESS",
+    value: "No 25 Kwame Nkrumah, Asokoro, Abuja.",
+  },
+  {
+    label: "POPULAR LANDMARK",
+    value: "NNPC Fueling Station",
+  },
+  {
+    label: "ESTATE LAND (IN HECTARES)",
+    value: "2 Hectares",
+  },
+  {
+    label: "COMPLETION STATUS",
+    value: "Completed",
+  },
+  {
+    label: "VIDEO URL",
+    value: "giddaa.youtube.com",
+  },
+  {
+    label: "NUMBER OF FLOORS",
+    value: "2 Floors",
+  },
+]
