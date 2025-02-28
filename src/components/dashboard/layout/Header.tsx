@@ -1,6 +1,5 @@
 import React from "react"
 import IconArrowDown from "@/components/IconComponents/IconArrowDown"
-import IconBackArrow from "@/components/IconComponents/IconBackArrow"
 import IconForwardArrow from "@/components/IconComponents/IconForwardArrow"
 import localFont from "next/font/local"
 import IconGreenHouse from "@/components/IconComponents/IconGreenHouse"
@@ -14,6 +13,7 @@ import CustomMenu from "@/components/SharedComponents/CustomMenu"
 import IconSystem from "@/components/IconComponents/IconSystem"
 import IconGuide from "@/components/IconComponents/IconGuide"
 import IconVideo from "@/components/IconComponents/IconVideo"
+import IconBackArrow from "@/components/IconComponents/IconBackArrow"
 
 const milliRegular = localFont({
   src: "../../fonts/millik-regular/millik-Regular.otf",

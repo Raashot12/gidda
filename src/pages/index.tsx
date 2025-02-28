@@ -1,5 +1,4 @@
 import MainLayout from "@/components/GiddaaLandingPage/layout/MainLayout"
-import "../styles/globals.css"
 import HeroSection from "@/components/GiddaaLandingPage/Shortlets/HeroSection"
 import ProductsSection from "@/components/GiddaaLandingPage/Shortlets/ProductsSection"
 import OurPartnersSection from "@/components/GiddaaLandingPage/Shortlets/OurPartnersSection"

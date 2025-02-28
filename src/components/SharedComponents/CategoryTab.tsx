@@ -7,7 +7,7 @@ const CategoryTabs = ({
   data: {
     title: string
     id: number
-    percent: number
+    percent?: number
   }[]
   setGetPercentage?: Dispatch<React.SetStateAction<number>>
 }) => {

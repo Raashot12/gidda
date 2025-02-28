@@ -1,5 +1,4 @@
 import FormElement from "@/components/Form"
-import IconArrowBack from "@/components/IconComponents/IconArrowBack"
 import IconBin from "@/components/IconComponents/IconBin"
 import IconDivider from "@/components/IconComponents/IconDivider"
 import IconEdit from "@/components/IconComponents/IconEdit"
@@ -8,7 +7,8 @@ import TextInput from "@/components/SharedComponents/Input"
 import Modal from "@/components/SharedComponents/Modal"
 import PageTitle from "@/components/SharedComponents/PageTitle"
 import TextArea from "@/components/SharedComponents/TextArea"
-import { OptionType } from "@/types"
+import IconArrowBack from "@/components/IconComponents/IconArrowBack"
+import {OptionType} from "@/types"
 import Image from "next/image"
 import React, {useState} from "react"
 import SpecificationAndAmenties from "../Specification"
@@ -29,7 +29,7 @@ const CreateEstate = ({
     imageUrl: string
   }[]
 }) => {
-  const [selectedValue, setSelectedValue] = useState("")
+  const [, setSelectedValue] = useState("")
   const options: OptionType[] = [
     {value: "apple", label: "Apple"},
     {value: "orange", label: "Orange"},

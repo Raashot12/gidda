@@ -22,7 +22,6 @@ const HeroSection = () => {
   return (
     <section className="container mx-auto relative">
       <section className="w-full mt-[110px] bg-white px-6 md:px-12 lg:px-20 py-12">
-        {/* Top Notification Bar */}
         <div className="flex justify-center">
           <div
             style={{
@@ -43,7 +42,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Title & Subtitle */}
         <div className="text-center mt-6">
           <h1
             className={`${milliRegular.className} text-[48px] leading-[68px]`}
@@ -69,7 +67,6 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* Explore Button */}
         <div className="flex justify-center mt-6">
           <button className="bg-[#1C501E] text-white px-6 py-3 rounded-full flex items-center gap-2 text-[13px] font-[700] shadow-md hover:bg-[#174319] transition">
             Explore Our Products{" "}
@@ -78,7 +75,7 @@ const HeroSection = () => {
             </span>
           </button>
         </div>
-        {/* Image Grid */}
+
         <div
           className="mt-12 grid grid-cols-1 lg:grid-cols-[37.5%_37.5%_25%] gap-6"
           data-aos="fade-up"
@@ -127,7 +124,6 @@ const HeroSection = () => {
           />
         </div>
 
-        {/* Floating Notification */}
         <div className="absolute top-5  hidden right-0 max-w-[309px] xl:block">
           <div className="relative p-[2px] rounded-lg bg-gradient-to-r from-[#335F32] via-[#335F32] to-[#EAA315]">
             <div className="relative z-10 bg-white px-4 py-3 rounded-lg">
