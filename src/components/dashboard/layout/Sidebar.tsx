@@ -17,27 +17,21 @@ type SidebarProps = {
   mobileShow: boolean
 }
 
-const Sidebar = ({
-  isOpened,
-  mobileShow,
-  toggleMobile,
-}: SidebarProps) => {
+const Sidebar = ({isOpened, mobileShow, toggleMobile}: SidebarProps) => {
   const [, setItemHovered] = useState<string | null>(null)
   const router = useRouter()
 
   const handleMouseHover = (param: string | null) => setItemHovered(param)
   const handleMouseOut = () => setItemHovered(null)
 
-  // Compute mobile (default) classes
   const mobileClasses = mobileShow
     ? "w-[233px] pl-[32px] pt-[15px] duration-200"
     : "w-0 pl-0 duration-200"
-  // Compute desktop (md and up) classes
+
   const desktopClasses = isOpened
     ? "md:w-[90px] md:pt-0 md:duration-500"
     : "md:w-[233px] md:pt-[30px] md:duration-500"
-  // md:pl-[30px]
-  // md:pl-[48px]
+
   const sidebarClasses = `bg-primaryGreen fixed z-[999] flex flex-col h-screen overflow-hidden text-left flex-shrink-0 min-h-0 pb-[20px] ${mobileClasses} ${desktopClasses} transition-all`
 
   return (

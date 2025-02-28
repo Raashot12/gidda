@@ -1,5 +1,5 @@
 import * as React from "react"
-const IconDashboard = ({active}: {active: boolean}) => (
+const IconDashboard = ({active}: {active?: boolean}) => (
   <svg
     width={23}
     height={24}
