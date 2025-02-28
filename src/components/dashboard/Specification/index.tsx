@@ -1,7 +1,7 @@
 import PageTitle from "@/components/SharedComponents/PageTitle"
 import React, {useState} from "react"
 
-const SpecificationAndAmenties = () => {
+const SpecificationAndAmenties = ({hideRuler}: {hideRuler?: boolean}) => {
   const allFeatures = [
     "Ample Parking Space",
     "Uniformed Security",
@@ -56,7 +56,14 @@ const SpecificationAndAmenties = () => {
 
   return (
     <div>
-      <PageTitle title="Specifications & Amenities" />
+      <div className="flex mt-7 items-center gap-2">
+        <PageTitle title="Specifications & Amenities" />
+        {hideRuler ? (
+          <></>
+        ) : (
+          <div className="h-[1px] bg-[#F0F0F0] flex-1"></div>
+        )}
+      </div>
       <div>
         <div className="flex items-center justify-between bg-[#F0F0F0] mt-6 rounded-[8px] py-2 px-4">
           <h2 className="text-lg font-semibold">General Features</h2>

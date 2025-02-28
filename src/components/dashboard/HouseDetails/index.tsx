@@ -13,6 +13,7 @@ import lekki from "../../Images/lekki.jpeg"
 import ajah from "../../Images/ajah.jpeg"
 import mushin from "../../Images/mushin.jpeg"
 import React, {useCallback, useState} from "react"
+import SpecificationAndAmenties from "../Specification"
 
 const TabPanelDataList = [
   "Details",
@@ -50,7 +51,7 @@ const HouseDetails = ({
       isOpen={isModalOpen}
       onClose={() => setModalOpen(false)}
       headerComponent={
-        <div className="h-[112px] bg-white flex items-end px-[25px] py-2 border-b border-[#F0F0F0]">
+        <div className="h-[112px] bg-white flex items-end px-[25px] md:px-[38px] py-2 border-b border-[#F0F0F0]">
           <div className="flex w-full items-center justify-between gap-3">
             <div className="flex flex-col items-start gap-2">
               <div className="flex items-center gap-5">
@@ -79,7 +80,7 @@ const HouseDetails = ({
               </div>
             </div>
             <div className="flex items-center gap-4 justify-center">
-              <button className="bg-[#346633] text-white px-4 py-3 rounded-[100px] flex items-center gap-2 text-[13px] font-[700] shadow-md hover:bg-[#174319] transition">
+              <button className="hidden md:flex bg-[#346633] text-white px-4 py-3 rounded-[100px] items-center gap-2 text-[13px] font-[700] shadow-md hover:bg-[#174319] transition">
                 <span className="animate-bounce">
                   <IconWhitePen />
                 </span>
@@ -147,7 +148,7 @@ const HouseDetails = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mt-6 not-italic">
+      <div className="relative mt-6 not-italic">
         <div
           className={`${
             documentationsComponentsList[activeComponent] ===
@@ -184,6 +185,11 @@ const HouseDetails = ({
           </div>
         </div>
       </div>
+      <div className="flex mt-7 items-center gap-2">
+        <PageTitle title="Estate Details" />
+        <div className="h-[1px] bg-[#F0F0F0] flex-1"></div>
+      </div>
+      <SpecificationAndAmenties hideRuler={true} />
     </Modal>
   )
 }

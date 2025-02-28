@@ -124,8 +124,8 @@ CustomMenu.Dropdown = ({children, direction = "auto", align = "auto"}) => {
   return open ? (
     <div
       ref={dropdownRef}
-      style={{boxShadow: "0px 4px 4px 0px #0000000D"}}
-      className={`absolute z-100 w-48 bg-white border border-[#E1E1E1] rounded-[15px] ${verticalClasses} ${horizontalClasses}`}
+      style={{boxShadow: "0px 4px 4px 0px #0000000D", zIndex: 13}}
+      className={`absolute z-13 w-48 bg-white border border-[#E1E1E1] rounded-[15px] ${verticalClasses} ${horizontalClasses}`}
     >
       {children}
     </div>

@@ -47,7 +47,7 @@ const CreateEstate = ({
       isOpen={isModalOpen}
       onClose={() => setModalOpen(false)}
       headerComponent={
-        <div className="h-[112px] flex items-end px-[25px] py-2 border-b border-[#F0F0F0]">
+        <div className="h-[112px] flex items-end px-[25px] md:px-[38px] py-2 border-b border-[#F0F0F0]">
           <div className="flex flex-col items-start gap-2">
             <div className="flex items-center gap-5">
               <button
