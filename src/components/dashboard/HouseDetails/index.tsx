@@ -9,8 +9,30 @@ import IconWhitePen from "@/components/IconComponents/IconWhitePen"
 import CustomMenu from "@/components/SharedComponents/CustomMenu"
 import Modal from "@/components/SharedComponents/Modal"
 import PageTitle from "@/components/SharedComponents/PageTitle"
-import React from "react"
+import lekki from "../../Images/lekki.jpeg"
+import ajah from "../../Images/ajah.jpeg"
+import mushin from "../../Images/mushin.jpeg"
+import React, {useCallback, useState} from "react"
 
+const TabPanelDataList = [
+  "Details",
+  "Properties",
+  "KYC documents",
+  "Allocation",
+  "Prospects",
+  "Analytics",
+  "Activity",
+]
+const documentationsComponentsList = [
+  "PaymentCollectionDetails",
+  "InsuranceAffiliationDetails",
+  "KycDocuments",
+]
+export const estates = [
+  {id: 1, src: lekki, alt: "Modern House"},
+  {id: 2, src: ajah, alt: "Classic House"},
+  {id: 3, src: mushin, alt: "Modern House"},
+]
 const HouseDetails = ({
   setModalOpen,
   isModalOpen,
@@ -18,6 +40,11 @@ const HouseDetails = ({
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
   isModalOpen: boolean
 }) => {
+  const [activeComponent, setActiveComponent] = useState<number>(0)
+
+  const handleComponentChange = useCallback((activeList: number) => {
+    setActiveComponent(activeList)
+  }, [])
   return (
     <Modal
       isOpen={isModalOpen}
@@ -101,15 +128,61 @@ const HouseDetails = ({
         </div>
       }
     >
-      <div>
+      <div className="mt-6">
+        <div className="flex space-x-6 border-b border-[#F0F0F0]">
+          {TabPanelDataList.map((data, index) => (
+            <button
+              key={index}
+              onClick={() => handleComponentChange(index)}
+              className={`relative text-[12px] font-[600] pb-3 transition-colors duration-300 ${
+                index === activeComponent
+                  ? "text-[#335F32] border-b-2 border-[#335F32]"
+                  : "text-[#979797] hover:text-[#335F32]"
+              }`}
+            >
+              {data}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mt-6 not-italic">
         <div
-          className="w-full h-[293px] bg-cover"
-          style={{
-            backgroundImage: `url(${image.src})`,
-            backgroundPosition: "30% 70%",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
+          className={`${
+            documentationsComponentsList[activeComponent] ===
+            "PaymentCollectionDetails"
+              ? "block"
+              : "hidden"
+          }`}
+        >
+          <div className="grid grid-cols-1 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+            {estates?.map(value => {
+              return (
+                <div
+                  key={value.id}
+                  className="w-full h-[293px] bg-cover"
+                  style={{
+                    backgroundImage: `url(${lekki.src})`,
+                    backgroundPosition: "30% 70%",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  <div className="flex gap-2 items-center cursor-pointer absolute bottom-2 right-2">
+                    <button className="bg-[#FFFFFF] text-[#335F32] px-2 py-3 rounded-[100px] flex items-center gap-2 text-[11px] font-[700] shadow-md hover:bg-[#174319] hover:text-[#FFFFF] transition">
+                      Side View
+                      <span className="animate-bounce"></span>
+                    </button>
+                    <button className="bg-[#1C501E] text-white px-2 py-3 border-white border rounded-[100px] flex items-center gap-2 text-[11px] font-[700] shadow-md hover:bg-[#174319] transition">
+                      Actual Image
+                      <span className="animate-bounce"></span>
+                    </button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </div>
     </Modal>
   )

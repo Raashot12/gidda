@@ -12,7 +12,7 @@
 body {
   color: var(--textColor);
   background: var(--background);
-  font-family: "Red Hat Display Variable", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
 }
 
 .scrollbar-hidden {
@@ -38,4 +38,7 @@ body {
 }
 .swal2-title {
   color: #335f32;
+}
+* {
+  font-style: normal;
 }
