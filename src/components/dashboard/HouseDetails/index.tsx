@@ -101,7 +101,16 @@ const HouseDetails = ({
         </div>
       }
     >
-      HouseDetails
+      <div>
+        <div
+          className="w-full h-[293px] bg-cover"
+          style={{
+            backgroundImage: `url(${image.src})`,
+            backgroundPosition: "30% 70%",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
+      </div>
     </Modal>
   )
 }

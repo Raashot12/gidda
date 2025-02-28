@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.plateaumed.com" target="blank">
+  <a href="https://gidda.vercel.app" target="blank">
     <img src="./public/favicon.svg" width="100" alt="Logo" />
   </a>
 </p>
@@ -31,7 +31,11 @@ $ npm run dev
 
 > Local: http://localhost:3000
 
-> Dev: https://app.plateaumed-dev.com/login
+> Login: http://localhost:3000/log-in   
+> Dashboard: http://localhost:3000/dashboard
+> Dev: https://gidda.vercel.app
+> Login: https://gidda.vercel.app/log-in   
+> Dashboard: https://gidda.vercel.app/dashboard
 
 ## Jest Unit Testing
 
@@ -49,7 +53,7 @@ $ npm run api-generate
 
 |   # | Service | URL                                                                                                                                           |
 | --: | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-|   1 | Gidda   | https://projects.zoho.com/portal/plateaumeddotcom#kanbanview/1982824000001304007/customview/1982824000000449003                               |
+|   1 | Gidda   | https://gidda.vercel.app                                                                                                                      |
 |   2 | Figma   | https://www.figma.com/design/TR4GXLbkhPOdN1LiXZsdZO/Frontend-Interview-Test?node-id=1-19576&t=ZSGyIAoosuHEcKBz-0                              |
 |   3 | Notion  | https://giddaa.notion.site/GIDDAA-FRONTEND-TECHNICAL-INTERVIEW-INSTRUCTIONS-6a4b828d491044d38fac4452d1d03b7a#18b33b9acc77809086afd07d4e313104 |
 
