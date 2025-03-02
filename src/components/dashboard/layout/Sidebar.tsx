@@ -8,6 +8,7 @@ import IconChangePassword from "@/components/IconComponents/IconChangePassword"
 import IconProfile from "@/components/IconComponents/IconProfile"
 import IconVerticalDots from "@/components/IconComponents/IconVerticalDots"
 import IconLogout from "@/components/IconComponents/IconLogout"
+import Cookies from "js-cookie"
 
 type SidebarProps = {
   isOpened: boolean
@@ -19,7 +20,6 @@ type SidebarProps = {
 const Sidebar = ({}: SidebarProps) => {
   const [, setItemHovered] = useState<string | null>(null)
   const router = useRouter()
-
   const handleMouseHover = (param: string | null) => setItemHovered(param)
   const handleMouseOut = () => setItemHovered(null)
 
@@ -118,6 +118,10 @@ const Sidebar = ({}: SidebarProps) => {
             </CustomMenu.Item>
             <div className="h-[1px] mt-2 bg-[#F0F0F0]"></div>
             <CustomMenu.Item
+              onClick={() => {
+                router.push("/")
+                Cookies.remove("token")
+              }}
               leftIcon={
                 <div className="animate-swayout">
                   <IconLogout />

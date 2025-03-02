@@ -16,7 +16,7 @@ import {RxEnter} from "react-icons/rx"
 import TextInput from "../SharedComponents/Input"
 import LoaderSpinner from "../SharedComponents/Loader"
 import {useApiTokenauthAuthenticatePostMutation} from "@/redux/services/tokenAuthApi"
-import {useDispatch} from "react-redux"
+// import {useDispatch} from "react-redux"
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -30,7 +30,7 @@ function LoginForm() {
   const [isSubmitting, setIsubmitting] = useState(false)
   const handleClose = () => setErrorMessage("")
   const [loginPostQuery] = useApiTokenauthAuthenticatePostMutation()
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const {
     register,
