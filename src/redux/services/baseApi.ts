@@ -18,4 +18,5 @@ const baseQuery = fetchBaseQuery({
 export const baseApi = createApi({
   baseQuery,
   endpoints: () => ({}),
+  tagTypes: ["Estate"],
 })

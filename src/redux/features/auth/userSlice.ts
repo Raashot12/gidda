@@ -1,9 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 import type {RootState} from "@/redux/store"
 
-// Define the type for the slice state.
 interface UserState {
-  authData: unknown | null // Replace `unknown` with a more specific type if available.
+  authData: unknown | null
 }
 
 const initialState: UserState = {
@@ -25,7 +24,6 @@ const userSlice = createSlice({
 
 export const {setAuthUserData, clearUserDetails} = userSlice.actions
 
-// Selector to retrieve the user state.
 export const selectUser = (state: RootState) => state.user
 
 export default userSlice.reducer

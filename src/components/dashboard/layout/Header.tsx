@@ -23,6 +23,8 @@ import IconLogout from "@/components/IconComponents/IconLogout"
 import IconChangePassword from "@/components/IconComponents/IconChangePassword"
 import IconVerticalDots from "@/components/IconComponents/IconVerticalDots"
 import IconProfile from "@/components/IconComponents/IconProfile"
+import {useDispatch} from "react-redux"
+import {setUserSearchData} from "@/redux/features/useSearchSlice"
 
 const milliRegular = localFont({
   src: "../../fonts/millik-regular/millik-Regular.otf",
@@ -35,6 +37,15 @@ export default function Header({
   toggleMobile?: () => void
   isOpened: boolean
 }) {
+  const dispatch = useDispatch()
+
+  const [search, setSearch] = useState("")
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
+    dispatch(setUserSearchData({search: e.target.value}))
+  }
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [, setItemHovered] = useState<string | null>(null)
   const router = useRouter()
@@ -44,11 +55,11 @@ export default function Header({
 
   const desktopClasses = isOpened
     ? "ml-0 md:w-[calc(100vw-233px)] md:duration-500"
-    : "ml-0 md:w-[calc(100vw-233px)] md:duration-500"
+    : "ml-0 w-full xl:w-[calc(100vw-233px)] md:duration-500"
   return (
     <>
       <header
-        className={`fixed top-0 ml-[2450px] right-0 w-full h-[112px] flex-shrink-0 ${desktopClasses} flex py-[30px] justify-between px-[25px] md:px-[38px] border-b border-[#F0F0F0] bg-white z-50`}
+        className={`fixed top-0 ml-[2450px]  right-0 w-full h-[112px] flex-shrink-0 ${desktopClasses} flex py-[30px] justify-between px-[25px] md:px-[38px] border-b border-[#F0F0F0] bg-white z-50`}
       >
         <div className="hidden xl:flex items-center justify-between w-full">
           <div className="hidden xl:flex gap-3 flex-col">
@@ -86,7 +97,12 @@ export default function Header({
             <span className="absolute left-4 top-[10px] text-gray-400">
               <IconSearchForDashboard size={20} />
             </span>
-            <TextInput type="text" placeholder="Search for anything" />
+            <TextInput
+              type="text"
+              placeholder="Search for anything"
+              value={search}
+              onChange={handleSearchChange}
+            />
           </div>
           <CustomMenu>
             <CustomMenu.Target>

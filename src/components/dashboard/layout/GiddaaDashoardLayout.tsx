@@ -28,7 +28,7 @@ const GiddaaDashoardLayout = ({children}: GiddaaDashoardProps) => {
         <Header toggleMobile={toggleMobile} isOpened={isOpened} />
         <div
           className={`flex-1 w-full text-left h-screen relative overflow-x-hidden ${
-            isOpened ? "ml-0 md:ml-[90px]" : "ml-0 md:ml-[233px]"
+            isOpened ? "ml-0 md:ml-[90px]" : "ml-0 xl:ml-[233px]"
           }`}
         >
           {/* Page container with responsive padding */}

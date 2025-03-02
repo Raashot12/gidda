@@ -1,7 +1,13 @@
 import PageTitle from "@/components/SharedComponents/PageTitle"
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 
-const SpecificationAndAmenties = ({hideRuler}: {hideRuler?: boolean}) => {
+const SpecificationAndAmenties = ({
+  hideRuler,
+  setSelectedAmenities,
+}: {
+  hideRuler?: boolean
+  setSelectedAmenities?: React.Dispatch<React.SetStateAction<string[]>>
+}) => {
   const allFeatures = [
     "Ample Parking Space",
     "Uniformed Security",
@@ -53,6 +59,11 @@ const SpecificationAndAmenties = ({hideRuler}: {hideRuler?: boolean}) => {
       setSelectedFeatures(prev => [...prev, feature])
     }
   }
+  useEffect(() => {
+    if (selectedFeatures) {
+      setSelectedAmenities?.(selectedFeatures)
+    }
+  }, [selectedFeatures, selectedFeatures.length])
 
   return (
     <div>

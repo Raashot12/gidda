@@ -13,6 +13,7 @@ body {
   color: var(--textColor);
   background: var(--background);
   font-family: "Red Hat Display Variable", sans-serif;
+  overflow-x: hidden;
 }
 
 .scrollbar-hidden {

@@ -19,7 +19,6 @@ import television from "../../components/Images/television.jpeg"
 import road from "../../components/Images/road.jpeg"
 import agent from "../../components/Images/agent.png"
 import tree from "../../components/Images/tree.jpeg"
-import estate from "../../components/Images/estate.jpeg"
 import office from "../../components/Images/office.jpeg"
 
 export const navMenu = [
@@ -269,116 +268,132 @@ export const cards = [
 
 export const properties = [
   {
-    id: 201,
+    id: "201",
     tag: "12 Houses",
     title: "Sunrise Estate",
     description: "No 4 Palm Road, Wuse II, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 202,
+    id: "202",
     tag: "16 Houses",
     title: "Paradise Estate",
     description:
       "No 13 Fisher Street, Wuse II, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 203,
+    id: "203",
     tag: "10 Houses",
     title: "Emerald Estate",
     description: "No 2 Rose Avenue, Garki, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 204,
+    id: "204",
     tag: "20 Houses",
     title: "Bloomfield Estate",
     description: "No 7 Olive Street, Maitama, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 205,
+    id: "205",
     tag: "8 Houses",
     title: "Greenfield Estate",
     description: "No 11 Pine Street, Wuse II, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 206,
+    id: "206",
     tag: "14 Houses",
     title: "Harmony Estate",
     description: "No 3 Cedar Close, Asokoro, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 207,
+    id: "207",
     tag: "5 Houses",
     title: "Serenity Estate",
     description:
       "No 5 Maple Street, Gwarinpa, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 208,
+    id: "208",
     tag: "18 Houses",
     title: "Lakeview Estate",
     description: "No 10 Water Lane, Katampe, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 209,
+    id: "209",
     tag: "9 Houses",
     title: "Crystal Estate",
     description:
       "No 6 Emerald Crescent, Jabi, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 210,
+    id: "210",
     tag: "7 Houses",
     title: "Moonlight Estate",
     description: "No 14 Galaxy Road, Wuse II, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 211,
+    id: "211",
     tag: "11 Houses",
     title: "Starfield Estate",
     description: "No 8 Comet Close, Garki, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 212,
+    id: "212",
     tag: "13 Houses",
     title: "Oakwood Estate",
     description: "No 4 Oak Lane, Maitama, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 213,
+    id: "213",
     tag: "6 Houses",
     title: "Evergreen Estate",
     description: "No 2 Lily Street, Asokoro, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 214,
+    id: "214",
     tag: "15 Houses",
     title: "Royal Estate",
     description:
       "No 9 Monarch Avenue, Gwarinpa, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
   {
-    id: 215,
+    id: "215",
     tag: "19 Houses",
     title: "Golden Estate",
     description:
       "No 1 Sunflower Drive, Katampe, Federal Capital Territory, Abuja",
-    image: estate,
+    image:
+      "https://res.cloudinary.com/giddaa-dev/image/upload/c_scale,w_1000/f_auto/q_auto:good/estates/17182a95-487d-4877-bd52-2425fdc24ebe.jpeg&quot",
   },
 ]
+
 
 export const estateDetails = [
   {

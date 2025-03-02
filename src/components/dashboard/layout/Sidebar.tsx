@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import {useRouter} from "next/router"
 import GiddaaLogo from "@/components/IconComponents/GiddaaLogo"
-import IconMenu from "@/components/IconComponents/IconMenu"
 import IconDashboard from "@/components/IconComponents/IconDashboard"
 import IconFlowerHouse from "@/components/IconComponents/IconFlowerHouse"
 import CustomMenu from "@/components/SharedComponents/CustomMenu"
@@ -17,26 +16,17 @@ type SidebarProps = {
   mobileShow: boolean
 }
 
-const Sidebar = ({isOpened, mobileShow, toggleMobile}: SidebarProps) => {
+const Sidebar = ({}: SidebarProps) => {
   const [, setItemHovered] = useState<string | null>(null)
   const router = useRouter()
 
   const handleMouseHover = (param: string | null) => setItemHovered(param)
   const handleMouseOut = () => setItemHovered(null)
 
-  const mobileClasses = mobileShow
-    ? "w-[233px] pl-[32px] pt-[15px] duration-200"
-    : "w-0 pl-0 duration-200"
-
-  const desktopClasses = isOpened
-    ? "md:w-[90px] md:pt-0 md:duration-500"
-    : "md:w-[233px] md:pt-[30px] md:duration-500"
-
-  const sidebarClasses = `bg-primaryGreen fixed z-[999] flex flex-col h-screen overflow-hidden text-left flex-shrink-0 min-h-0 pb-[20px] ${mobileClasses} ${desktopClasses} transition-all`
+  const sidebarClasses = `w-0 pl-0 duration-200 duration-200 xl:w-[233px] xl:pt-[29px] duration-200 bg-primaryGreen fixed z-[999] flex flex-col h-screen overflow-hidden text-left flex-shrink-0 min-h-0 pb-[20px]  transition-all`
 
   return (
     <aside className={sidebarClasses}>
-      {/* Logo: hidden on mobile */}
       <div
         className={`hidden md:block md:pl-[30px] flex-shrink-0 border-b-2 pb-4 border-[#979797]`}
       >
@@ -46,12 +36,6 @@ const Sidebar = ({isOpened, mobileShow, toggleMobile}: SidebarProps) => {
           Residencia Moderno Smart...
         </p>
       </div>
-      {/* Hamburger icon: visible only on mobile */}
-      <div className="flex md:hidden" onClick={toggleMobile}>
-        <IconMenu />
-      </div>
-
-      {/* Scrollable content container */}
       <div className="mt-[43px] md:pl-[30px] md:pr-[30px] flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar">
         <div className="space-y-[18px] mt-[16px] text-[#0A0A0A]">
           <div

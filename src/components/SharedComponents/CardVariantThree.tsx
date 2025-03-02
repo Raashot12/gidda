@@ -1,4 +1,3 @@
-import {StaticImageData} from "next/image"
 import React from "react"
 import CustomMenu from "./CustomMenu"
 import IconEye from "../IconComponents/IconEye"
@@ -8,12 +7,17 @@ import IconAddHouse from "../IconComponents/IconAddHouse"
 import IconDelete from "../IconComponents/IconDelete"
 
 interface CardProps {
+  id: string
+  tag: string
   title: string
   description: string
-  image: StaticImageData
-  index: number
-  tag: string
-  setIsViewHouse: React.Dispatch<React.SetStateAction<boolean>>
+  image: string
+  setIsViewHouse: React.Dispatch<
+    React.SetStateAction<{
+      booleanState: boolean
+      estateId: string
+    }>
+  >
 }
 
 const CardVariantThree = ({
@@ -21,6 +25,7 @@ const CardVariantThree = ({
   description,
   tag,
   image,
+  id,
   setIsViewHouse,
 }: CardProps) => {
   return (
@@ -39,15 +44,31 @@ const CardVariantThree = ({
         <div
           className="w-full h-[110.66666412353516px] bg-cover flex-shrink-0"
           style={{
-            backgroundImage: `url(${image.src})`,
+            backgroundImage: `url(${image})`,
             backgroundPosition: "30% 60%",
             backgroundRepeat: "no-repeat",
           }}
         ></div>
         <div className={`w-full pb-6 px-6 pt-0 mx-auto`}>
           <div className="flex items-center flex-col justify-center">
-            <h3 className="text-[24px] font-[700] text-[#000000]">{title}</h3>
-            <p className="text-[#000000] text-center w-[100%] leading-[26px] font-[400] text-[16px] mt-2">
+            <h3
+              className="text-[24px] font-[700] text-[#000000] overflow-hidden text-ellipsis break-words whitespace-normal"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: "vertical",
+              }}
+            >
+              {title}
+            </h3>
+            <p
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+              }}
+              className="text-[#000000] text-center w-[100%] leading-[26px] overflow-hidden text-ellipsis break-words whitespace-normal font-[400] text-[16px] mt-2"
+            >
               {description}
             </p>
           </div>
@@ -61,7 +82,7 @@ const CardVariantThree = ({
           <CustomMenu.Dropdown direction="auto" align="right">
             <CustomMenu.Item
               leftIcon={<IconEye />}
-              onClick={() => setIsViewHouse(true)}
+              onClick={() => setIsViewHouse({booleanState: true, estateId: id})}
             >
               <p className="font-[400] ml-2 text-[11px] text-[#4B4B4B]">
                 View House

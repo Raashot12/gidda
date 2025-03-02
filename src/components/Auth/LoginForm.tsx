@@ -16,10 +16,8 @@ import {RxEnter} from "react-icons/rx"
 import TextInput from "../SharedComponents/Input"
 import LoaderSpinner from "../SharedComponents/Loader"
 import {useApiTokenauthAuthenticatePostMutation} from "@/redux/services/tokenAuthApi"
-// import {setAuthorizationToken} from "@/utility/tokenValidation"
-// For the Facebook icon, you can either use an SVG or a React Icon library
+import {useDispatch} from "react-redux"
 
-// Define a Zod schema for your login form.
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(1, "Password is required"),
@@ -32,7 +30,8 @@ function LoginForm() {
   const [isSubmitting, setIsubmitting] = useState(false)
   const handleClose = () => setErrorMessage("")
   const [loginPostQuery] = useApiTokenauthAuthenticatePostMutation()
-  // Set up react-hook-form with the Zod resolver.
+  const dispatch = useDispatch()
+
   const {
     register,
     handleSubmit,
@@ -59,17 +58,19 @@ function LoginForm() {
           "success"
         )
         setIsubmitting(false)
-         router.push("/dashboard")
+        router.push("/dashboard")
         Cookies.set("token", `${payload?.value?.value?.token}`)
+        // dispatch(setAuthUserData())
       })
       .catch(errorMessage => {
-        console.log(errorMessage)
         setIsubmitting(false)
         const err = errorMessage?.data?.value?.message
         if (err && typeof err === "string") {
           setErrorMessage(err)
         } else {
-          setErrorMessage(errorMessage?.message || "An unexpected error occurred.")
+          setErrorMessage(
+            errorMessage?.message || "An unexpected error occurred."
+          )
         }
       })
   }

@@ -2,6 +2,7 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit"
 import {baseApi as api} from "./services/baseApi"
 import authReducer from "./features/auth/authSlice"
 import userSlice from "./features/auth/userSlice"
+import useSearchSlice from "../redux/features/useSearchSlice"
 import {
   persistReducer,
   persistStore,
@@ -25,6 +26,7 @@ const persistedUserReducer = persistReducer(persistConfigUser, userSlice)
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  searchSlice: useSearchSlice,
   user: persistedUserReducer,
   [api.reducerPath]: api.reducer,
 })

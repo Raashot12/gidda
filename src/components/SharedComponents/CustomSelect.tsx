@@ -2,6 +2,7 @@
 import clsx from "clsx"
 import {useState, useRef, useEffect} from "react"
 import IconSearchForDashboard from "../IconComponents/IconSearchForDashboard"
+import LoaderSpinner from "./Loader"
 
 export type Option = {value: string; label: string}
 
@@ -11,7 +12,10 @@ type CustomSelectProps = {
   searchable?: boolean
   value?: string
   onChange?: (value: string) => void
+  onItemSubmit?: (item: Option) => void
   className?: string
+  label?: string
+  loadingState?: boolean
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -20,6 +24,9 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   searchable = false,
   className,
   onChange,
+  label,
+  loadingState,
+  onItemSubmit,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [dropUp, setDropUp] = useState(false)
@@ -66,6 +73,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     setSelectedOption(option)
     onChange && onChange(option.value)
     setIsOpen(false)
+    onItemSubmit?.(option)
     setSearchValue("")
   }
 
@@ -87,36 +95,41 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 
   return (
     <div className="relative" ref={containerRef}>
+      <h1 className="text-[12px] font-[700] mb-[2px] text-[#000000]">
+        {label} <span className="text-red-500">*</span>
+      </h1>
       <div
         className="w-full rounded-[100px] shrink-0 border text-[14px] font-[500] border-[#F0F0F0] placeholder:text-[11px] placeholder:text-[#979797] leading-[21px] h-[42px] px-4  text-gray-800 focus:outline-none flex items-center justify-between"
         onClick={() => setIsOpen(prev => !prev)}
       >
         <span
           className={`${
-            placeholder
-              ? "font-[500] text-[12px] text-[#4B4B4B]"
-              : selectedOption?.label
-              ? "text-[#000000] font-[500]"
-              : ""
+            selectedOption
+              ? "font-[500] text-[14px] text-[#4B4B4B]"
+              : "text-[#4B4B4B] font-[500] text-[12px]"
           }`}
         >
-          {selectedOption ? selectedOption.label : placeholder}
+          {selectedOption ? selectedOption?.label?.toUpperCase() : placeholder}
         </span>
-        <svg
-          className={`w-4 h-4 ml-2 transition-transform duration-300 transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        {loadingState ? (
+          <LoaderSpinner size={10} color="#335F32" />
+        ) : (
+          <svg
+            className={`w-4 h-4 ml-2 transition-transform duration-300 transform ${
+              isOpen ? "rotate-180" : ""
+            }`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        )}
       </div>
 
       <div

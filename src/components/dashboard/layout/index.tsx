@@ -1,100 +1,178 @@
 import {properties} from "@/components/constant"
 import IconPlus from "@/components/IconComponents/IconPlus"
-import Swal from "sweetalert2"
 import CardVariantThree from "@/components/SharedComponents/CardVariantThree"
 import PageTitle from "@/components/SharedComponents/PageTitle"
-import Pagination from "@/components/SharedComponents/Pagination/Pagination"
-import {usePagination} from "@/components/SharedComponents/Pagination/usePagination"
-import React, {useState} from "react"
+import React, {useEffect, useMemo, useState} from "react"
 import CreateEstate from "../CreateEstate"
 import HouseDetails from "../HouseDetails"
-
-type ImagePreview = {
-  fileName: string
-  imageUrl: string
-}
+import {useApiGetAllEstateDataQuery} from "@/redux/services/getAllEstate"
+import {useDebounce} from "@/components/hooks/useDebounce"
+import {useDispatch, useSelector} from "react-redux"
+import {RootState} from "@/redux/store"
+import Skeleton from "@/components/SharedComponents/Skeleton"
+import EmptyState from "@/components/SharedComponents/EmptyState"
+import IconPaginateLeft from "@/components/IconComponents/IconPaginateLeft"
+import IconPaginateRight from "@/components/IconComponents/IconPaginateRight"
+import {setUserSearchData} from "@/redux/features/useSearchSlice"
 
 const DashboardUI = () => {
-  const [visibleProperties, setVisibleProperties] = useState(
-    properties.slice(0, 4)
+  const [visibleProperties, setVisibleProperties] = useState<
+    {
+      id: string
+      tag: string
+      title: string
+      description: string
+      image: string
+    }[]
+  >([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const searchState = useSelector(
+    (state: RootState) => state.searchSlice.search
   )
-  const [imagePreviews, setImagePreviews] = useState<ImagePreview[]>([])
- 
-  const [imageFiles, setImageFiles] = useState<File[]>([])
   const [isModalOpen, setModalOpen] = useState(false)
-  const [isViewHouse, setIsViewHouse] = useState(false)
-  const batchCount = 4
-  const {pagination, prevPage, nextPage, changePage} = usePagination({
-    itemsPerPage: 4,
-    data: visibleProperties,
-    startFrom: 1,
+  const debouncedSearch = useDebounce(searchState, 500)
+  const [isViewHouse, setIsViewHouse] = useState({
+    booleanState: false,
+    estateId: "",
   })
-  const handleShowMore = () => {
-    const currentLength = visibleProperties.length
-    const remaining = properties.length - currentLength
-    const nextBatchCount = remaining < batchCount ? remaining : batchCount
-    setVisibleProperties(properties.slice(0, currentLength + nextBatchCount))
+  const pageSize = 10
+  const {data, isFetching, isError, refetch} = useApiGetAllEstateDataQuery({
+    search: debouncedSearch,
+    pageNumber: currentPage,
+    pageSize,
+  })
+  const dispatch = useDispatch()
+  const totalPages = data?.value?.value?.totalPages || 1
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(prev => prev + 1)
   }
 
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage(prev => prev - 1)
+  }
 
-  
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const maxSize = 5 * 1024 * 1024 // 5MB
-    const allowedTypes = ["image/png", "image/jpeg", "image/jpg"]
-    const files = e.target.files
+  useEffect(() => {
+    if (!isFetching && !isError && data) {
+      const properties = data?.value?.value?.data?.map(item => {
+        return {
+          id: item?.id,
+          tag: item?.ownerType,
+          title: item?.name,
+          description: item?.description,
+          image: item?.images?.[0]?.document,
+        }
+      })
+      setVisibleProperties(properties?.slice(0, 10))
+    } else if (!isFetching && isError) {
+      setVisibleProperties([])
+    }
+  }, [data, isFetching, isError])
 
-    if (!files || files.length === 0) {
-      Swal.fire(
-        "File error, kindly check file.",
-        "You clicked the button!",
-        "warning"
+  const handleClamp = (arg: string) => {
+    if (!arg) return
+
+    const url = new URL(window.location.href)
+    url.hash = arg
+    window.history.replaceState(null, "", url.toString())
+    setTimeout(() => {
+      document
+        .getElementById(arg)
+        ?.scrollIntoView({behavior: "smooth", block: "start"})
+    }, 100)
+  }
+  const allShown = visibleProperties.length === data?.value?.value?.totalRecords
+
+  const renderContent = useMemo(() => {
+    if (isFetching) {
+      return (
+        <div className="grid grid-cols-1 mt-8 md:mt-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {properties.slice(0, 8).map((_, index) => (
+            <div className="relative" key={index}>
+              <Skeleton height="110px" width="100%"></Skeleton>
+              <Skeleton height="20px" className="mt-4" width="100%"></Skeleton>
+              <Skeleton height="20px" width="100%" className="mt-4"></Skeleton>
+            </div>
+          ))}
+        </div>
       )
-      return
+    }
+    if (isError) {
+      return (
+        <EmptyState
+          emptyStateMessage="An error occurred while fetching properties."
+          buttonText="Try Again"
+          resetFunct={() => refetch()}
+        />
+      )
+    }
+    if (visibleProperties?.length === 0 && !isFetching) {
+      return (
+        <EmptyState
+          emptyStateMessage="No property found for your query"
+          buttonText="Refresh"
+          resetFunct={() => {
+            if (!isFetching && !isError && data) {
+              dispatch(setUserSearchData({search: ""}))
+            }
+          }}
+        />
+      )
     }
 
-    const validPreviews: ImagePreview[] = []
-    const validFiles: File[] = []
+    return (
+      <div id="properties" className="mt-8 md:mt-12">
+        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {visibleProperties?.map((card, index) => (
+            <React.Fragment key={index}>
+              <CardVariantThree {...card} setIsViewHouse={setIsViewHouse} />
+            </React.Fragment>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 flex-col justify-center mt-[30px] sm:mt-[40px] cursor-pointer">
+          <div className="flex justify-start items-center gap-2">
+            <button
+              onClick={() => {
+                handleClamp("properties")
+                handlePrevPage()
+              }}
+              disabled={currentPage === 1}
+              className={`${
+                currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+              } flex items-center bg-transparent hover:bg-transparent active:bg-transparent`}
+            >
+              <IconPaginateLeft disable={currentPage === 1} />
+            </button>
 
-    for (const file of files) {
-      if (file.size > maxSize) {
-        Swal.fire(
-          "Sorry! File is larger than 5MB",
-          "You clicked the button!",
-          "warning"
-        )
-        continue
-      }
-
-      if (!allowedTypes.includes(file.type)) {
-        Swal.fire(
-          "File error, kindly check file type.",
-          "You clicked the button!",
-          "warning"
-        )
-        continue
-      }
-
-      const imageUrl = URL.createObjectURL(file)
-      validPreviews.push({fileName: file.name, imageUrl})
-      validFiles.push(file)
-    }
-
-    // Append valid items to the state arrays
-    setImagePreviews(prev => [...prev, ...validPreviews])
-    setImageFiles(prev => [...prev, ...validFiles])
-  }
-  const handleDelete = (id: number) => {
-    const remainingImage = imagePreviews?.filter((_, index) => id !== index)
-    const remainingImageFile = imageFiles?.filter((_, index) => id !== index)
-    setImagePreviews(remainingImage)
-    setImageFiles(remainingImageFile)
-  }
-  const handleShowLess = () => {
-    setVisibleProperties(properties.slice(0, 4))
-    window.scrollTo({top: 112, left: 0, behavior: "smooth"})
-  }
-
-  const allShown = visibleProperties.length === properties.length
+            <button
+              onClick={() => {
+                handleClamp("properties")
+                handleNextPage()
+              }}
+              disabled={currentPage === totalPages}
+              className={`${
+                currentPage === totalPages
+                  ? "opacity-50 cursor-not-allowed"
+                  : ""
+              } flex items-center bg-transparent hover:bg-transparent active:bg-transparent`}
+            >
+              <IconPaginateRight />
+            </button>
+          </div>
+          {!allShown && Number(data?.value?.value?.data?.length) > 4 && (
+            <p className="font-normal text-[11px] text-[#335F32]">
+              View&nbsp;
+              {Math.max(
+                0,
+                Number(data?.value?.value?.totalRecords) -
+                  currentPage * pageSize
+              )}
+              &nbsp; More
+            </p>
+          )}
+        </div>
+      </div>
+    )
+  }, [isFetching, visibleProperties])
 
   return (
     <div className="mt-[140px] mb-6">
@@ -102,7 +180,10 @@ const DashboardUI = () => {
         <PageTitle title="Estates-5" />
         <div className="flex justify-center">
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setCurrentPage(1)
+              setModalOpen(true)
+            }}
             className="bg-[#346633] text-white px-3 py-3 rounded-full flex items-center gap-2 text-[13px] font-[700] hover:bg-[#174319] transition"
           >
             <span>
@@ -112,49 +193,12 @@ const DashboardUI = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 mt-8 md:mt-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {visibleProperties.map((card, index) => (
-          <CardVariantThree
-            key={index}
-            index={index}
-            {...card}
-            setIsViewHouse={setIsViewHouse}
-          />
-        ))}
-      </div>
-      <div className="flex items-center gap-2 flex-col justify-center mt-[30px] sm:mt-[40px] cursor-pointer">
-        <Pagination
-          idToClampTo="blogs"
-          pagination={pagination}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          changePage={changePage}
-        />
-        {!allShown && properties.length > 4 && (
-          <p
-            onClick={handleShowMore}
-            className="font-normal text-[11px] text-[#335F32]"
-          >
-            View {properties.length - visibleProperties.length} More
-          </p>
-        )}
-        {allShown && (
-          <button
-            onClick={handleShowLess}
-            className="font-normal text-[11px] text-[#335F32]"
-          >
-            Reduce to 4
-          </button>
-        )}
-      </div>
-      <CreateEstate
-        handleImageUpload={handleImageUpload}
-        handleDelete={handleDelete}
-        isModalOpen={isModalOpen}
-        setModalOpen={setModalOpen}
-        imagePreviews={imagePreviews}
-      />
-      <HouseDetails setModalOpen={setIsViewHouse} isModalOpen={isViewHouse} />
+      <>{renderContent}</>
+
+      <CreateEstate isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
+      {isViewHouse?.booleanState && (
+        <HouseDetails setModalOpen={setIsViewHouse} isModalOpen={isViewHouse} />
+      )}
     </div>
   )
 }
