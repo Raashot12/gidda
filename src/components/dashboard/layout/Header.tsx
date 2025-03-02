@@ -23,7 +23,8 @@ import IconLogout from "@/components/IconComponents/IconLogout"
 import IconChangePassword from "@/components/IconComponents/IconChangePassword"
 import IconVerticalDots from "@/components/IconComponents/IconVerticalDots"
 import IconProfile from "@/components/IconComponents/IconProfile"
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux"
+import Cookies from "js-cookie"
 import {setUserSearchData} from "@/redux/features/useSearchSlice"
 
 const milliRegular = localFont({
@@ -304,6 +305,10 @@ export default function Header({
                 </CustomMenu.Item>
                 <div className="h-[1px] mt-2 bg-[#F0F0F0]"></div>
                 <CustomMenu.Item
+                  onClick={() => {
+                    router.push("/")
+                    Cookies.remove("token")
+                  }}
                   leftIcon={
                     <div className="animate-swayout">
                       <IconLogout />
