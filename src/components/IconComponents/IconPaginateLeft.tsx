@@ -1,5 +1,5 @@
 import * as React from "react"
-const IconPaginateLeft = ({disable}: {disable: boolean}) => (
+const IconPaginateLeft = ({disable}: {disable?: boolean}) => (
   <svg
     width={23}
     height={22}
