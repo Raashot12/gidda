@@ -16,10 +16,10 @@ const NavigationHeader = () => {
 
   return (
     <>
-      <div className="bg-navbg border-b fixed top-0 left-0 w-full border-[#D9D9D9] p-6 z-50">
+      <div className="bg-navbg border-b fixed top-0 left-0 w-full border-[#D9D9D9]  py-3 md:py-6 px-3 md:px-6 z-50">
         <div className="container mx-auto">
           <div className="flex items-center justify-between">
-            <div className="pt-2 cursor-pointer" onClick={() => push("/")}>
+            <div className="cursor-pointer" onClick={() => push("/")}>
               <GiddaaLogo />
             </div>
             {/* Center Section: Search + Nav Links */}
@@ -75,11 +75,11 @@ const NavigationHeader = () => {
         onClick={() => setIsDrawerOpen(false)}
       />
       <div
-        className={`fixed w-[90%] h-[100%] top-[96px] xl:hidden left-0 right-0 bg-white z-50 transition-transform duration-300 ease-out transform ${
+        className={`fixed w-[90%] h-[100%] top-[75.5px] md:top-[96px] xl:hidden left-0 right-0 bg-white z-50 transition-transform duration-300 ease-out transform ${
           isDrawerOpen ? "translate-x-0" : "-translate-x-[100%]"
         }`}
       >
-        <div className="container px-6 py-4 flex flex-col items-start space-y-6">
+        <div className="container px-3 md:px-6 py-4 flex flex-col items-start space-y-6">
           {/* Search Bar */}
           <div className="relative w-full max-w-[300px]">
             <span className="absolute left-4 top-[14px] text-gray-400">

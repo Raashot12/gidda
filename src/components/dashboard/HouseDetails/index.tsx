@@ -292,7 +292,7 @@ const HouseDetails = ({
       }
     >
       <div className="mt-6">
-        <div className="flex space-x-6 border-b border-[#F0F0F0] overflow-x-auto md:overflow-x-scroll whitespace-nowrap">
+        <div className="flex space-x-6 border-b border-[#F0F0F0] overflow-x-auto md:overflow-x-hidden whitespace-nowrap">
           {TabPanelDataList.map((data, index) => (
             <button
               key={index}

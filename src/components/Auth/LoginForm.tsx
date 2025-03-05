@@ -1,6 +1,7 @@
 import {useState} from "react"
 import {useForm} from "react-hook-form"
 import {z} from "zod"
+import {jwtDecode} from "jwt-decode"
 import {zodResolver} from "@hookform/resolvers/zod"
 import Cookies from "js-cookie"
 import Link from "next/link"
@@ -16,7 +17,9 @@ import {RxEnter} from "react-icons/rx"
 import TextInput from "../SharedComponents/Input"
 import LoaderSpinner from "../SharedComponents/Loader"
 import {useApiTokenauthAuthenticatePostMutation} from "@/redux/services/tokenAuthApi"
-// import {useDispatch} from "react-redux"
+import {DecodedToken} from "@/types"
+import {setAuthUserData} from "@/redux/features/auth/userSlice"
+import {useDispatch} from "react-redux"
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -30,7 +33,7 @@ function LoginForm() {
   const [isSubmitting, setIsubmitting] = useState(false)
   const handleClose = () => setErrorMessage("")
   const [loginPostQuery] = useApiTokenauthAuthenticatePostMutation()
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const {
     register,
@@ -59,8 +62,13 @@ function LoginForm() {
         )
         setIsubmitting(false)
         router.push("/dashboard")
-        Cookies.set("token", `${payload?.value?.value?.token}`)
-        // dispatch(setAuthUserData())
+        const token = payload?.value?.value?.token
+        Cookies.set("token", token)
+
+        if (token) {
+          const decodedToken: DecodedToken = jwtDecode<DecodedToken>(token)
+          dispatch(setAuthUserData(decodedToken))
+        }
       })
       .catch(errorMessage => {
         setIsubmitting(false)

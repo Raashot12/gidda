@@ -32,11 +32,11 @@ const HeroSection = () => {
             data-aos="fade-left"
             data-aos-duration="2000"
           >
-            <span className="text-primaryGreen font-[700] text-[10px]">
+            <span className="text-primaryGreen font-[700] text-[8px] md:text-[10px]">
               WE SERVE NIGERIANS ACROSS THE GLOBE
             </span>
             <div className="bg-[#D9D9D9] w-[2px] h-[24px]"></div>
-            <span className="text-primaryGreen font-[700] text-[10px]">
+            <span className="text-primaryGreen font-[700] text-[8px] md:text-[10px]">
               👀 10,000 PEOPLE HAVE SEEN THIS
             </span>
           </div>
@@ -124,7 +124,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="absolute top-5  hidden right-0 max-w-[309px] xl:block">
+        <div className="absolute top-5  hidden right-2 max-w-[309px] xl:block">
           <div className="relative p-[2px] rounded-lg bg-gradient-to-r from-[#335F32] via-[#335F32] to-[#EAA315]">
             <div className="relative z-10 bg-white px-4 py-3 rounded-lg">
               <div className="flex gap-3 items-start">

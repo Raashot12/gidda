@@ -64,3 +64,13 @@ export type EstateResponse = {
   declaredType: unknown | null
   statusCode: number
 }
+
+export interface DecodedToken {
+  Id: string
+  Name: string
+  RoleId: string
+  Email: string
+  exp: number
+  iss: string
+  aud: string
+}

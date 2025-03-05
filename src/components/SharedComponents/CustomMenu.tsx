@@ -22,6 +22,7 @@ const CustomMenu: React.FC<CustomMenuProps> & {
     children: React.ReactNode
     direction?: "up" | "down" | "auto"
     align?: "left" | "right" | "auto"
+    width?: string
   }>
   Item: React.FC<{
     children: React.ReactNode
@@ -70,7 +71,12 @@ CustomMenu.Target = ({children}) => {
   )
 }
 
-CustomMenu.Dropdown = ({children, direction = "auto", align = "auto"}) => {
+CustomMenu.Dropdown = ({
+  children,
+  direction = "auto",
+  align = "auto",
+  width = "192",
+}) => {
   const context = React.useContext(CustomMenuContext)
   if (!context) {
     throw new Error("CustomMenu.Dropdown must be used within a CustomMenu")
@@ -124,8 +130,12 @@ CustomMenu.Dropdown = ({children, direction = "auto", align = "auto"}) => {
   return open ? (
     <div
       ref={dropdownRef}
-      style={{boxShadow: "0px 4px 4px 0px #0000000D", zIndex: 13}}
-      className={`absolute z-13 w-48 bg-white border border-[#E1E1E1] rounded-[15px] ${verticalClasses} ${horizontalClasses}`}
+      style={{
+        boxShadow: "0px 4px 4px 0px #0000000D",
+        zIndex: 13,
+        width: `${width}px`,
+      }}
+      className={`absolute z-13 bg-white border border-[#E1E1E1] rounded-[15px] ${verticalClasses} ${horizontalClasses}`}
     >
       {children}
     </div>

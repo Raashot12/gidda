@@ -79,7 +79,7 @@ const CardVariantThree = ({
           <CustomMenu.Target>
             <IconHorizontalDot />
           </CustomMenu.Target>
-          <CustomMenu.Dropdown direction="auto" align="right">
+          <CustomMenu.Dropdown direction="auto" align="right" width="130">
             <CustomMenu.Item
               leftIcon={<IconEye />}
               onClick={() => setIsViewHouse({booleanState: true, estateId: id})}

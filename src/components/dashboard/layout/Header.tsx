@@ -23,9 +23,11 @@ import IconLogout from "@/components/IconComponents/IconLogout"
 import IconChangePassword from "@/components/IconComponents/IconChangePassword"
 import IconVerticalDots from "@/components/IconComponents/IconVerticalDots"
 import IconProfile from "@/components/IconComponents/IconProfile"
-import { useDispatch } from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import Cookies from "js-cookie"
 import {setUserSearchData} from "@/redux/features/useSearchSlice"
+import {DecodedToken} from "@/types"
+import {persistor, RootState} from "@/redux/store"
 
 const milliRegular = localFont({
   src: "../../fonts/millik-regular/millik-Regular.otf",
@@ -38,10 +40,16 @@ export default function Header({
   toggleMobile?: () => void
   isOpened: boolean
 }) {
+  const user: DecodedToken = useSelector(
+    (state: RootState) => state.user.authData
+  ) as DecodedToken
   const dispatch = useDispatch()
-
   const [search, setSearch] = useState("")
 
+  const removePersistedUser = () => {
+    localStorage.removeItem("persist:user")
+    persistor.purge()
+  }
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
     dispatch(setUserSearchData({search: e.target.value}))
@@ -255,7 +263,7 @@ export default function Header({
                   </button>
                 </div>
               </CustomMenu.Target>
-              <CustomMenu.Dropdown>
+              <CustomMenu.Dropdown width="167" align="left">
                 <CustomMenu.Item leftIcon={<IconGuide />}>
                   <p className="font-[500] text-[12px] text-black">
                     Product Tour & Guide
@@ -278,12 +286,12 @@ export default function Header({
                 <div className="flex items-start justify-center">
                   <button className="bg-[#F0F0F0] text-[#335F32] border border-[#D9D9D9] px-1 py-2 rounded-full flex items-center gap-3 text-[11px] font-[700] hover:bg-[#F0F0F0] transition">
                     <span className="bg-[#335F32] flex items-center justify-center w-[29px] h-[29px] rounded-[50%] text-white text-[13px] font-[700]">
-                      N
+                      {user?.Email?.[0]?.toUpperCase()}
                     </span>
-                    <div className="flex flex-col gap-1 text-[#000000]">
-                      <p>James Mensah Iskilu</p>
+                    <div className="flex items-start flex-col gap-1 text-[#000000]">
+                      <p>{user?.Name}</p>
                       <p className="font-[600] text-[9px] text-[#667085]">
-                        Jamesmensah@gmail.com
+                        {user?.Email}
                       </p>
                     </div>
                     <span>
@@ -307,6 +315,7 @@ export default function Header({
                 <CustomMenu.Item
                   onClick={() => {
                     router.push("/")
+                    removePersistedUser()
                     Cookies.remove("token")
                   }}
                   leftIcon={
